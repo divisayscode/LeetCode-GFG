@@ -1,28 +1,27 @@
-// using sliding window approach 
 class Solution {
-public:
+  public:
     int maxSubarraySum(vector<int>& arr, int k) {
-
-        int n=arr.size();
-        int res=0;
-        int sum=0;
-        int low=0;
-        int high=k-1;
-
-        for(int i=low;i<=high;i++) {
-            sum=sum+arr[i];
-        }
-
-        res=sum;
-
-        while(high<n-1) {
-            sum=sum-arr[low];
-            low++;
-            high++;
-            sum=sum+arr[high];
-            res=max(sum,res);
-        }
-
-        return res;
+    int n=arr.size();
+    int sum=0;
+    int low=0;
+    int high=k-1;
+    int ans=0;
+    for(int i=low;i<=high;i++){
+        sum=sum+arr[i];
+    }// till here i will get the sum that is 100+200 for first window 
+    
+    while(high<n)
+    {
+       ans=max(ans,sum); 
+       low++;
+       high++;
+       if(high==n)
+       {
+           break;
+       }
+       sum=sum-arr[low-1];
+       sum=sum+arr[high];
+    }
+       return ans; 
     }
 };
