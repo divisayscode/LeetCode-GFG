@@ -12,8 +12,8 @@ public:
     for(high=0;high<n;high++)
     {
     f[s[high]]++;
-    // arr.size()==f.size() then only our ans is correct 
-    //and also hashmap size can never be greater than array size so we dont have that case as well 
+    // window length == hashmap size then only our ans is correct 
+    //and also hashmap size can never be greater than k  so we dont have that case as well 
     //only wrong value would be that hashmap size less than arr size
     k=high-low+1;
     while(f.size()<k)
